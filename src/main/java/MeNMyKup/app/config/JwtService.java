@@ -18,7 +18,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-
+    // change to secure method before deployment
     private static String SECRET_KEY = "9a24df971bfd3bf0387f3f5d0f81ff0dda96d263a1e66472a34da36b08db9d35";
 
     public String extractUsername(String jwtToken){
