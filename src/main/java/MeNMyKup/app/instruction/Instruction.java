@@ -1,5 +1,6 @@
-package MeNMyKup.app.recipe;
+package MeNMyKup.app.instruction;
 
+import MeNMyKup.app.recipe.Recipe;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

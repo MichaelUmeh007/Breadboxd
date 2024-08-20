@@ -1,9 +1,10 @@
 package MeNMyKup.app.recipe;
 
+import MeNMyKup.app.ingredient.RecipeIngredient;
+import MeNMyKup.app.instruction.Instruction;
 import MeNMyKup.app.profile.Cuisine;
 import MeNMyKup.app.review.Review;
 import MeNMyKup.app.user.User;
-import com.fasterxml.jackson.databind.annotation.EnumNaming;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

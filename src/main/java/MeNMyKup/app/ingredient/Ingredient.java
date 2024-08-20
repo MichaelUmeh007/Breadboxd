@@ -1,4 +1,4 @@
-package MeNMyKup.app.recipe;
+package MeNMyKup.app.ingredient;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
