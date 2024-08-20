@@ -1,4 +1,4 @@
-package MeNMyKup.app.recipe;
+package MeNMyKup.app.ingredient;
 
 public enum Unit {
 

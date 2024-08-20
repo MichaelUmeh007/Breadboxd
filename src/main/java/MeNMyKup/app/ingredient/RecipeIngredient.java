@@ -1,7 +1,7 @@
-package MeNMyKup.app.recipe;
+package MeNMyKup.app.ingredient;
 
+import MeNMyKup.app.recipe.Recipe;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
