@@ -1,7 +1,7 @@
 package MeNMyKup.app.profile;
 
 import MeNMyKup.app.user.User;
-import MeNMyKup.app.user.UserImage;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
