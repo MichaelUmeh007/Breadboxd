@@ -1,18 +1,15 @@
 import './App.css';
+import Regsiter from './pages/Register';
 
-function MyButton() {
-  return (
-    <button>goat talk</button>
-  );
-}
+
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to my app</h1>
-      <MyButton />
-    </div>
+
+      <Regsiter/>
+
   );
 }
+
 
 export default App;
