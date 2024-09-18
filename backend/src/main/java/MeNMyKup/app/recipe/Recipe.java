@@ -1,5 +1,6 @@
 package MeNMyKup.app.recipe;
 
+import MeNMyKup.app.equipment.Equipment;
 import MeNMyKup.app.ingredient.RecipeIngredient;
 import MeNMyKup.app.instruction.Instruction;
 import MeNMyKup.app.profile.Cuisine;
@@ -29,11 +30,19 @@ public class Recipe {
     @Column(
             name = "title",
             columnDefinition = "TEXT",
-            length = 200,
+            length = 150,
             nullable = false
 
     )
     private String title;
+
+    @Column(
+            name = "description",
+            columnDefinition = "TEXT",
+            nullable = false,
+            length = 250
+    )
+    private String description;
 
     @Enumerated
     @Column(
@@ -66,6 +75,11 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @OrderBy("date ASC")
     private Set<Review> recipeReviews;
+
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Equipment> recipeEquipment;
+
+
 
     @Column(
             name = "servings",

@@ -31,6 +31,13 @@ public class Review {
     private Float rating;
 
     @Column(
+            name = "title",
+            columnDefinition = "TEXT",
+            length = 80,
+            nullable = false
+    )
+    private String title;
+    @Column(
             name = "comment",
             columnDefinition = "TEXT",
             length = 180
