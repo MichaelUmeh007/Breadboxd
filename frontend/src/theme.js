@@ -5,8 +5,9 @@ const theme = createTheme({
         breadbrown : {
             main: "#7f5937",
         }
-    }
-
+    },
+    logosizing: "10%",
+    borderRadius: 2
 })
 
 export default theme;

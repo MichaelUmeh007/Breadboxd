@@ -266,7 +266,7 @@ const Regsiter = () => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 backgroundColor: theme.palette.breadbrown.main,
-                                borderRadius: theme.spacing(1),
+                                borderRadius: theme.borderRadius,
                                 width:"100%"
                             }}
                         >
