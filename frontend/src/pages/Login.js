@@ -217,7 +217,7 @@ const Login = () => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 backgroundColor: theme.palette.breadbrown.main,
-                                borderRadius: theme.spacing(1),
+                                borderRadius: theme.borderRadius,
                                 width:"100%"
                             }}
                         >
@@ -255,7 +255,7 @@ const Login = () => {
                                             onChange={handleUsername}
                                             sx={{
                                                 backgroundColor:"white",
-                                                borderRadius:theme.spacing(1.5)
+                                                borderRadius:theme.borderRadius * 1.5
                                             }}
                                             slotProps={{
                                                 input: {
