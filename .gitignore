@@ -2,3 +2,4 @@
 /backend/.idea
 /.vscode
 /frontend/node_modules
+/backend/src/main/resources/application.properties
