@@ -1,18 +1,42 @@
 import { Container } from "@mui/material";
+import Box from "@mui/material/Box"
 import Navbar from "../components/Navbar";
+import theme from "../theme";
 
 
 
 
 const Landing = () => {
-  const pages = ['Login', 'Register', 'Trending']
+  const pages = ['Spotlight']
+  const dropdown = ['Login', 'Register']
+
   
   return (
-    <Container 
+    <Container
+      maxWidth={false}
+      disableGutters
       sx={{
-        paddingTop: "2%"
+          height: '100vh',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display:"flex",
+          justifyContent:"center",
+          backgroundColor: theme.backgroundColor
       }}>
-      <Navbar pages={pages}/>
+
+      <Box
+
+        sx={{
+          width:'70%',
+          paddingTop: "2%",
+          
+        }}>
+          
+          <Navbar pages={pages} dropdown={dropdown} />
+      </Box>
+
+
+      
     </Container>
 
   )
