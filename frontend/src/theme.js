@@ -7,7 +7,8 @@ const theme = createTheme({
         }
     },
     logosizing: "10%",
-    borderRadius: 2
+    borderRadius: 2,
+    backgroundColor: "#e5beab"
 })
 
 export default theme;

@@ -1,11 +1,12 @@
 import './App.css';
 import theme from './theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import createStore from 'react-auth-kit/createStore';
 import AuthProvider from 'react-auth-kit';
 import Landing from './pages/Landing';
-
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 
 
@@ -20,12 +21,18 @@ function App() {
 
   return (
     <AuthProvider store={store}>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <CssBaseline/>
-            <Landing/>
-        </ThemeProvider>
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+      <CssBaseline/>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/'/>
+              <Route index element={<Landing/>}/>
+              <Route path="register" element={<Register />}/>
+              <Route path="login" element={<Login />}/>
+              <Route path="*" element={<Landing />}/>
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </AuthProvider>
 
 

@@ -249,7 +249,7 @@ const Regsiter = () => {
                 }}>
                     <Typography variant="h1"
                         sx={{
-                            marginTop: "3%",
+                            marginTop: "1%",
                             textAlign:"center",
                             fontWeight:"bold",
                             marginBottom: theme.spacing(2),
