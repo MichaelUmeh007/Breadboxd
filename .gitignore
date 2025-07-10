@@ -1,6 +1,32 @@
+# ---- IDE/Editor Files ----
 .idea/
-/backend/target
+.vscode/
+
+# ---- Java/Spring Boot ----
+/backend/target/
 /backend/.idea
-/.vscode
-/frontend/node_modules
+/backend/.mvn/
+/backend/.classpath
+/backend/.project
+/backend/.settings/
+/backend/target/
+/backend/HELP.md
+/backend/logs/
+
+# Spring Boot secret config
 /backend/src/main/resources/application.properties
+/backend/src/main/resources/application.yml
+
+# Maven wrapper
+/backend/mvnw
+/backend/mvnw.cmd
+
+# ---- Node.js (React Frontend) ----
+/frontend/node_modules/
+/frontend/.env
+/frontend/build/
+/frontend/dist/
+
+# ---- OS Files ----
+Thumbs.db
+ehthumbs.db
