@@ -11,7 +11,9 @@ import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
+
 public class CorsConfig {
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){

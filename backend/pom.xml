@@ -94,6 +94,18 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version> <!-- specify version -->
+				<configuration>
+					<source>21</source> <!-- or your Java version -->
+					<target>21</target> <!-- or your Java version -->
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
