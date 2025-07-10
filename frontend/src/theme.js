@@ -8,7 +8,10 @@ const theme = createTheme({
     },
     logosizing: "10%",
     borderRadius: 2,
-    backgroundColor: "#e5beab"
+    backgroundColor: "wheat",
+    navbarMy: 2, 
+    navbarColor: 'white',
+    navbarFontWeight:600
 })
 
 export default theme;

@@ -8,7 +8,7 @@ import theme from "../theme";
 
 const Landing = () => {
   const pages = ['Spotlight']
-  const dropdown = ['Login', 'Register']
+  const dropdown = []
 
   
   return (

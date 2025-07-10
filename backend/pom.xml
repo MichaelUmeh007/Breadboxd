@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>MeNMyKup</groupId>
-	<artifactId>app</artifactId>
+	<artifactId>Breadboxd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Breadboxd</name>
 	<description>demo project for portfolio</description>

@@ -1,14 +1,40 @@
-import { AppBar, Box, Container, Toolbar, useTheme, Typography, MenuItem } from "@mui/material";
+import { AppBar, Box, Container, Toolbar, useTheme, Typography, MenuItem, Menu, styled } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+// Navbar Component for landing page and dashboard
 const Navbar = ({ pages, dropdown }) => {
 
+    const [anchorElUser, setAnchorElUser] = useState(null)
+    const navigate = useNavigate()
     const theme = useTheme()
 
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget)
+
+    }
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null)
+
+    }
+
+    const handleNavigate = (dropItem) => {
+        navigate('/' + dropItem)
+    }
+
+    const NavbarStyledText = styled(Typography)(({theme}) => ({
+    '&:hover' : {
+        color: 'blue',
+    }, my:theme.navbarMy, display:'block', color:theme.navbarColor, fontWeight:theme.navbarFontWeight
+}))
+
     return (
-        <AppBar position="static" sx={{bgcolor:'breadbrown.main', borderRadius: theme.borderRadius}} >
+
+       ( <AppBar position="static" sx={{bgcolor:'breadbrown.main', borderRadius: theme.borderRadius}} >
             <Container maxWidth='xl' >
                 <Toolbar disableGutters 
                     sx={{
@@ -65,31 +91,72 @@ const Navbar = ({ pages, dropdown }) => {
                                 key={page}
                             >
 
-                            <Typography
-                                sx={{ my: 2, color: 'white', display: 'block', fontWeight:600 }}>
+                            <NavbarStyledText>
                                 {page}
-                            </Typography>
+                            </NavbarStyledText>
 
                                 
                             </MenuItem> 
                         ))}
                     </Box>
 
-                    <Box sx={{display: {xs:'none', md:'flex'}, flexBasis: '33%', justifyContent:'end'}}>
-                        <Tooltip title="Account">
-                            <IconButton>
-                                <Avatar/>
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
+                    {/* Conditionally render account icon or register/login link if page is navbar is on dashboard or landing */}
+                    { !dropdown ? 
+                        <><Box sx={{display: {xs:'none', md:'flex'}, flexBasis: '33%', justifyContent:'end'}}>
+                            <Tooltip title="Account">
+                                <IconButton onClick={handleOpenUserMenu}>
+                                    <Avatar/>
+                                </IconButton>
+                            </Tooltip>
+                        </Box>
+
+                        <Menu
+                            anchorEl={anchorElUser}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                            anchorOrigin={{
+                                vertical:'bottom',
+                                horizontal:'center'
+                            }}
+                            transformOrigin={{
+                                vertical:'top',
+                                horizontal:'center'
+                            }}
+                            keepMounted
+                        >
+                            {dropdown.map((dropItem) => (
+                            
+                            <MenuItem
+                                sx={{alignContent:'center'}}
+                                key={dropItem}
+                            >
+                                <Typography 
+                                    sx={{textAlign:'center'}}
+                                    onClick={() => handleNavigate(dropItem)}>
+                                    {dropItem}
+                                </Typography>
+                            </MenuItem>
+                                
+                            ))}
+                        </Menu> </> :
+
+                        <> <Box sx={{display: {xs:'none', md:'flex'}, flexBasis: '33%', justifyContent:'end'}}>
+                            <NavbarStyledText>
+                                Register
+                            </NavbarStyledText>
+                            /
+                            <NavbarStyledText>
+                                Login
+                            </NavbarStyledText>
+                        </Box></>}
 
 
 
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar> )
 
-    );
+    ); 
 }
 
 export default Navbar;
