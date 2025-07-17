@@ -1,9 +1,9 @@
-package MeNMyKup.app.auth;
+package Breadboxd.app.auth;
 
-import MeNMyKup.app.config.JwtService;
-import MeNMyKup.app.user.Role;
-import MeNMyKup.app.user.User;
-import MeNMyKup.app.user.UserRepository;
+import Breadboxd.app.config.JwtService;
+import Breadboxd.app.user.Role;
+import Breadboxd.app.user.User;
+import Breadboxd.app.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

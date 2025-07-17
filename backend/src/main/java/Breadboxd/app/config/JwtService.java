@@ -1,4 +1,4 @@
-package MeNMyKup.app.config;
+package Breadboxd.app.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

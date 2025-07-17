@@ -1,4 +1,4 @@
-package MeNMyKup.app.auth;
+package Breadboxd.app.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

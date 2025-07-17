@@ -1,4 +1,4 @@
-package MeNMyKup.app.auth;
+package Breadboxd.app.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

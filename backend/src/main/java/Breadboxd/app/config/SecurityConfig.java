@@ -1,4 +1,4 @@
-package MeNMyKup.app.config;
+package Breadboxd.app.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

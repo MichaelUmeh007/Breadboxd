@@ -1,4 +1,4 @@
-package MeNMyKup.app.user;
+package Breadboxd.app.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package MeNMyKup.app.config;
+package Breadboxd.app.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
