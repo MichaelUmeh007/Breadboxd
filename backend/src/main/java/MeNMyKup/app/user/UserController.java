@@ -15,14 +15,13 @@ public class UserController {
     private final UserRepository userRepository;
 
     @GetMapping("/public/users/check-username")
-    public ResponseEntity<Boolean> checkUsernameUnique(@RequestParam String username){
+    public ResponseEntity<Boolean> checkUsernameUnique(@RequestParam(name = "username") String username){
         boolean exists = userRepository.findByUsername(username).isPresent();
         return ResponseEntity.ok(exists);
     }
 
     @GetMapping("/public/users/check-email")
-    public ResponseEntity<Boolean> checkEmailUnique(@RequestParam String email){
-        System.out.println("Received request to check email: " + email);
+    public ResponseEntity<Boolean> checkEmailUnique(@RequestParam(name = "email") String email){
         boolean exists = userRepository.findByEmail(email).isPresent();
         return ResponseEntity.ok(exists);
     }
