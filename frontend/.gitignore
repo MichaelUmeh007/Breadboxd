@@ -1,23 +1,72 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-/.pnp
+# ───────────────
+# 🔧 Dependency directories
+# ───────────────
+node_modules/
+.pnp/
 .pnp.js
 
-# testing
-/coverage
+# ───────────────
+# 🧪 Testing outputs
+# ───────────────
+coverage/
+.vitest/
 
-# production
-/build
+# ───────────────
+# ⚙️ Build output
+# ───────────────
+build/
+dist/
+.next/
+out/
+temp/
 
-# misc
+# ───────────────
+# 🌐 Environment variables
+# ───────────────
+.env
+.env.*
+!.env.example
+
+# ───────────────
+# 💻 OS / Editor specific
+# ───────────────
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+Thumbs.db
+*.swp
+*.swo
 
+# ───────────────
+# 🧠 Logs & Debug
+# ───────────────
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+
+# ───────────────
+# ⚛️ IDEs
+# ───────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ───────────────
+# 🔄 Lint & formatting
+# ───────────────
+.eslintcache
+.prettiercache
+
+# ───────────────
+# 🧪 Storybook
+# ───────────────
+.storybook-out/
+storybook-static/
+
+# ───────────────
+# 📦 Package manager files
+# ───────────────
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
