@@ -26,6 +26,10 @@
 /frontend/build/
 /frontend/dist/
 
+# Planning and Organizational files
+breadboxd_mvp_checklist.md
+output.txt
+
 # ---- OS Files ----
 Thumbs.db
 ehthumbs.db
