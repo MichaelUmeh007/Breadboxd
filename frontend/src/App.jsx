@@ -1,15 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/auth/Login";
-import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme';
+
+import { BrowserRouter } from "react-router-dom";
+import {OldLogin, Login} from "./pages/auth/Login";
+
 
 function App() {
+  const old = true
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-             <Login/>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      {old ? <OldLogin/> : <Login/>}
+    </BrowserRouter>
   );
 }
 
