@@ -5,6 +5,7 @@ import {
   FormHelperText,
   Grid,
   InputAdornment,
+  Stack,
   TextField,
   Typography,
   useTheme
@@ -12,6 +13,7 @@ import {
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
+import loginBackground from '../../assets/loginbackground.jpg'
 
 
 export const OldLogin = () => {
@@ -174,8 +176,59 @@ export const OldLogin = () => {
 
 export const Login = () => {
     return (
-        <>
-        </>
+        <Stack
+          sx={{
+            flexDirection:'column',
+            component:'main',
+            justifyContent:'center',
+            minHeight:'100vh',
+            minWidth:'100vw',
+            backgroundImage:`url(${loginBackground})`,
+            backgroundSize:'cover',
+            backgroundPosition:'center'
+          }}
+        >
+        <Stack
+          direction={{ xs: 'column-reverse', md: 'row' }}
+          sx={{
+            justifyContent: 'center',
+            gap: { xs: 6, sm: 12 },
+            p: 2,
+            mx: 'auto',
+          }}
+        >
+          <Stack
+            direction={{ xs: 'column-reverse', md: 'row' }}
+            sx={{
+              justifyContent: 'center',
+              gap: { xs: 6, sm: 12 },
+              p: { xs: 2, sm: 4 },
+              m: 'auto',
+            }}
+          >
+            <Box 
+              sx={{
+                width:'100%',
+                maxWidth:450,
+                alignSelf:'center',
+                flexDirection:'column'
+              }}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis expedita ex vel nostrum suscipit voluptatum commodi saepe adipisci iure eum, dolor quos consequuntur temporibus praesentium debitis labore quibusdam placeat facere.
+            </Box>
+            <Box 
+              sx={{
+                width:'100%',
+                maxWidth:450,
+                alignSelf:'center',
+                flexDirection:'column'
+              }}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia dicta voluptate eius est expedita aliquid minima? Delectus blanditiis ratione officia corporis. Dolorem repudiandae velit, aliquid sed minus consectetur id accusantium!
+            </Box>
+          </Stack>
+        </Stack>
+        </Stack>
     )
 }
 

@@ -4,7 +4,7 @@ import {OldLogin, Login} from "./pages/auth/Login";
 
 
 function App() {
-  const old = true
+  const old = false
   return (
     <BrowserRouter>
       {old ? <OldLogin/> : <Login/>}
