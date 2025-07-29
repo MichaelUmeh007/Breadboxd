@@ -1,6 +1,6 @@
 
 import { BrowserRouter } from "react-router-dom";
-import {OldLogin, Login} from "./pages/auth/Login";
+import {OldLogin, Login} from "./pages/login/Login";
 
 
 function App() {

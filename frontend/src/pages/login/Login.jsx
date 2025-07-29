@@ -14,6 +14,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
 import loginBackground from '../../assets/loginbackground.jpg'
+import { LoginContent } from "./LoginContent";
+import { LoginForm } from "./LoginForm";
 
 
 export const OldLogin = () => {
@@ -176,14 +178,16 @@ export const OldLogin = () => {
 
 export const Login = () => {
     return (
-        <Stack
+        <Stack component={'main'}
           sx={{
             flexDirection:'column',
-            component:'main',
             justifyContent:'center',
             minHeight:'100vh',
             minWidth:'100vw',
-            backgroundImage:`url(${loginBackground})`,
+            backgroundImage:`
+                radial-gradient(ellipse closest-side at center, rgba(0, 0, 0, 0.6), transparent),
+                url(${loginBackground})
+                `,
             backgroundSize:'cover',
             backgroundPosition:'center'
           }}
@@ -206,26 +210,8 @@ export const Login = () => {
               m: 'auto',
             }}
           >
-            <Box 
-              sx={{
-                width:'100%',
-                maxWidth:450,
-                alignSelf:'center',
-                flexDirection:'column'
-              }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis expedita ex vel nostrum suscipit voluptatum commodi saepe adipisci iure eum, dolor quos consequuntur temporibus praesentium debitis labore quibusdam placeat facere.
-            </Box>
-            <Box 
-              sx={{
-                width:'100%',
-                maxWidth:450,
-                alignSelf:'center',
-                flexDirection:'column'
-              }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia dicta voluptate eius est expedita aliquid minima? Delectus blanditiis ratione officia corporis. Dolorem repudiandae velit, aliquid sed minus consectetur id accusantium!
-            </Box>
+            <LoginContent  />
+            <LoginForm />
           </Stack>
         </Stack>
         </Stack>
