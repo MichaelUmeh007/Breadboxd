@@ -11,7 +11,7 @@ import AuthCard from "../../components/AuthCard";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
-import useTheme from "@mui/material";
+import { useTheme } from "@mui/material";
 
 export const LoginForm = () => {
     const theme = useTheme();
@@ -103,7 +103,7 @@ export const LoginForm = () => {
                 <Link style={{ color: '#87CEEB' }} > Sign Up</Link>
                 </Box>
             </Box>
-            
+
         </AuthCard>
 
     )
