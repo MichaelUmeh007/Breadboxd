@@ -7,17 +7,19 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import AuthCard from "../../components/AuthCard";
+import AuthCard from "@/components/AuthCard";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
+import { AuthHeader } from "../../components/AuthHeader";
 
 export const LoginForm = () => {
     const theme = useTheme();
     return (
 
         <AuthCard>
+            <AuthHeader/>
             <Typography
                 component="h1"
                 variant="h4"
@@ -26,7 +28,12 @@ export const LoginForm = () => {
                     fontSize: 'clamp(2rem, 10vw, 2.15rem)',
                     fontFamily: 'Inter, sans-serif',
                     fontWeight: 'bold',
-                    color: 'white'
+                    color: 'white',
+                    justifyContent:'center',
+
+                    [theme.breakpoints.down('xs')]: {
+                    
+                    }
                 }}
             >
                 Sign in

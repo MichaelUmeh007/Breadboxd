@@ -14,6 +14,7 @@ export default function AuthCard({children}) {
                 backgroundColor: theme.palette.breadbrown.main,
                 borderRadius: theme.borderRadius,
                 padding: theme.spacing(4),
+                pt: theme.spacing(2),
                 gap: theme.spacing(2),
                 [theme.breakpoints.up('sm')]: {
                 width: '450px',
