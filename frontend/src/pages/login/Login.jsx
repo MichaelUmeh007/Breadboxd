@@ -5,7 +5,6 @@ import {
   FormHelperText,
   Grid,
   InputAdornment,
-  Stack,
   TextField,
   Typography,
   useTheme
@@ -16,6 +15,7 @@ import { Link } from "react-router-dom";
 import loginBackground from '../../assets/loginbackground.jpg'
 import { LoginContent } from "./LoginContent";
 import { LoginForm } from "./LoginForm";
+import AuthLayout from "../../layouts/AuthLayout";
 
 
 export const OldLogin = () => {
@@ -178,43 +178,10 @@ export const OldLogin = () => {
 
 export const Login = () => {
     return (
-        <Stack component={'main'}
-          sx={{
-            flexDirection:'column',
-            justifyContent:'center',
-            minHeight:'100vh',
-            minWidth:'100vw',
-            backgroundImage:`
-                radial-gradient(ellipse closest-side at center, rgba(0, 0, 0, 0.6), transparent),
-                url(${loginBackground})
-                `,
-            backgroundSize:'cover',
-            backgroundPosition:'center'
-          }}
-        >
-        <Stack
-          direction={{ xs: 'column-reverse', md: 'row' }}
-          sx={{
-            justifyContent: 'center',
-            gap: { xs: 6, sm: 12 },
-            p: 2,
-            mx: 'auto',
-          }}
-        >
-          <Stack
-            direction={{ xs: 'column-reverse', md: 'row' }}
-            sx={{
-              justifyContent: 'center',
-              gap: { xs: 6, sm: 12 },
-              p: { xs: 2, sm: 4 },
-              m: 'auto',
-            }}
-          >
-            <LoginContent  />
-            <LoginForm />
-          </Stack>
-        </Stack>
-        </Stack>
+        <AuthLayout backgroundImage={loginBackground}>
+          <LoginContent/>
+          <LoginForm/>
+        </AuthLayout>
     )
 }
 
