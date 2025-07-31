@@ -1,17 +1,18 @@
 import { createTheme } from '@mui/material/styles';
+import '@fontsource/bebas-neue';
 
 const theme = createTheme({
     palette: {
         breadbrown : {
             main: "#7f5937",
-        }
+        },
+        logoOrange : {
+            main : "#F28C28"
+        } 
     },
-    logosizing: "10%",
     borderRadius: 2,
     backgroundColor: "wheat",
-    navbarMy: 2, 
-    navbarColor: 'white',
-    navbarFontWeight:600
+    logoFontFamily: 'bebas neue'
 })
 
 export default theme;

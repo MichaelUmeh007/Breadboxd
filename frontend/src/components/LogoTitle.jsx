@@ -1,17 +1,17 @@
 import Logo from "@/assets/logo.svg?react";
 import { Box, SvgIcon, Typography} from "@mui/material";
 import { useTheme } from "@mui/material";
-
-
-export default function AuthHeader({size = 50}) {
+export default function LogoTitle ({size = 50, fontSize = '2rem'}) {
     const theme = useTheme();
     return (
         <Box
             sx={{
-                display: {xs:'flex', sm:'none'},
+                display: 'flex',
                 flexDirection: 'row',
                 width:'100%',
                 justifyContent:'center',
+                alignItems: "center",
+                gap: 1
 
             }}
         >
@@ -22,6 +22,19 @@ export default function AuthHeader({size = 50}) {
                     display:'flex'
                 }}  
             />
+
+            <Typography
+                variant="h5"
+                sx={{
+                    fontWeight: 'bold',
+                    fontFamily: theme.logoFontFamily,
+                    fontSize: fontSize,
+                    display: 'flex',
+                    color: theme.palette.logoOrange.main 
+                }}
+            >
+                Breadboxd
+            </Typography>
 
         </Box>
     )

@@ -12,7 +12,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
-import { AuthHeader } from "../../components/AuthHeader";
+import AuthHeader from "../../components/AuthHeader";
 
 export const LoginForm = () => {
     const theme = useTheme();
@@ -31,8 +31,8 @@ export const LoginForm = () => {
                     color: 'white',
                     justifyContent:'center',
 
-                    [theme.breakpoints.down('xs')]: {
-                    
+                    [theme.breakpoints.down('sm')]: {
+                    display:'none'
                     }
                 }}
             >
