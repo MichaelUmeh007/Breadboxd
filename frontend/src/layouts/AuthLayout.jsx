@@ -9,7 +9,7 @@ export default function AuthLayout({backgroundImage, children}) {
             minHeight:'100vh',
             minWidth:'100vw',
             backgroundImage:{
-                xs:`radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%),url(${backgroundImage})`,
+                xs:`radial-gradient(circle at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%),url(${backgroundImage})`,
                 sm:`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${backgroundImage})`,
             },
             backgroundSize:'cover',

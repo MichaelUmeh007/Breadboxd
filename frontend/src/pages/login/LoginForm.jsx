@@ -12,14 +12,32 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
-import AuthHeader from "../../components/AuthHeader";
+import Logo from "../../components/Logo";
+import { useState, useEffect } from "react";
 
 export const LoginForm = () => {
+
     const theme = useTheme();
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState({
+        username: '',
+        password: '',
+        login: '',
+    })
+
+    useEffect(() => {
+    setErrors({
+        username: 'You baboon',
+        password:'my name jeff',
+        login: ''
+    });
+    }, []);
+
     return (
 
         <AuthCard>
-            <AuthHeader/>
+            <Logo/>
             <Typography
                 component="h1"
                 variant="h4"
@@ -39,6 +57,12 @@ export const LoginForm = () => {
                 Sign in
             </Typography>
 
+
+            {errors.login && 
+            <FormHelperText sx={{color:"red", fontSize:15}}>
+                            {errors.login}
+            </FormHelperText>}
+
             <Box component="form" 
                 sx={{
                 width: '100%',
@@ -49,7 +73,7 @@ export const LoginForm = () => {
 
                 <FormControl>
                     <TextField
-                    sx={{ backgroundColor: "white", borderRadius: theme.borderRadius * 1.5 }}
+                    sx={{ backgroundColor: "white", borderRadius: theme.borderRadius }}
                     slotProps={{
                         input: {
                         startAdornment: (
@@ -73,7 +97,7 @@ export const LoginForm = () => {
 
                 <FormControl>
                     <TextField
-                    sx={{ backgroundColor: "white", borderRadius: theme.spacing(1.5) }}
+                    sx={{ backgroundColor: "white", borderRadius: theme.borderRadius }}
                     slotProps={{
                         input: {
                         startAdornment: (
