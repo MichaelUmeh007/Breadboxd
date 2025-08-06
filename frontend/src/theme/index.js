@@ -8,7 +8,10 @@ const theme = createTheme({
         },
         logoOrange : {
             main : "#F28C28"
-        } 
+        },
+        buttonGreen : {
+            main: "#0d7544"
+        }
     },
     borderRadius: 2,
     backgroundColor: "wheat",

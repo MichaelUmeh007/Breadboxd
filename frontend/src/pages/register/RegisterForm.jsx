@@ -14,20 +14,19 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
 import Logo from "../../components/Logo";
 import { useState, useEffect } from "react";
-import { handleLogin } from "@/utils/auth/handleLogin";
 
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
 
     const theme = useTheme();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [loading, setLoading] = useState(false)
     const [errors, setErrors] = useState({
         username: '',
         password: '',
         login: '',
     })
+
 
     return (
 
@@ -59,7 +58,6 @@ export const LoginForm = () => {
             </FormHelperText>}
 
             <Box component="form" 
-                onSubmit={(e) => handleLogin(e, username, password, setErrors, setLoading)}
                 sx={{
                 width: '100%',
                 display: "flex",
@@ -129,16 +127,10 @@ export const LoginForm = () => {
                 </FormControl>
 
                 <Button
-                    type="submit"
-                    disabled={loading}
-                    variant="contained"
-                    size="Medium"
-                    sx={{ 
-                        marginTop: theme.spacing(2), 
-                        backgroundColor: theme.palette.buttonGreen.main, 
-                        maxWidth: "40%", 
-                        left: "30%" 
-                    }}
+                type="submit"
+                variant="contained"
+                size="Medium"
+                sx={{ marginTop: theme.spacing(2), backgroundColor: "#0d7544", maxWidth: "40%", left: "30%" }}
                 >
                 Login
                 </Button>
