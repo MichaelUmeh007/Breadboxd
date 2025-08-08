@@ -5,25 +5,26 @@ export const LoginContent = () => {
     <Stack
         sx={{ 
             flexDirection: 'column',
-            alignSelf: 'center',
             gap: 4,
             maxWidth: 450 ,
-            display: { xs: 'None', md: 'flex' } 
+            alignItems: 'flex-start',
+            display: { xs: 'none', md: 'flex' } 
         }}
     >
         <Box sx={{ display: 'flex' }}>
             <Typography
                 variant="h1"
                 sx={{
-                textAlign: "center",
+                textAlign: "left",
                 fontWeight: "bold",
-                color: "wheat"
+                color: "wheat",
+                lineHeight: 1.1
                 }}
             >
                 What's Looking, Good Cooking?
             </Typography>
         </Box>
-        <LogoTitle size={80} fontSize="4rem"/>
+        <LogoTitle size={80} fontSize="3rem" alignItems="flex-start" justifyContent="flex-start"/>
 
     </Stack>
 
