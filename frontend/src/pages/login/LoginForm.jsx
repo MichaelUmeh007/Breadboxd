@@ -86,6 +86,7 @@ export const LoginForm = () => {
                     name="username"
                     placeholder="Username"
                     autoComplete="username"
+                    onChange={(e) => {setUsername(e.target.value); setErrors(prev => ({...prev, username:''}))}}
                     helperText={errors.username}
                     error={errors.username !== ''}
                     FormHelperTextProps={{
@@ -117,6 +118,7 @@ export const LoginForm = () => {
                     name="password"
                     type="password"
                     placeholder="Password"
+                    onChange={(e) => {setPassword(e.target.value); setErrors(prev => ({...prev, password:''}))}}
                     helperText={errors.password}
                     error={errors.password !== ''}
                     FormHelperTextProps={{
