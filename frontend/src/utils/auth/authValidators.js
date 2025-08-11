@@ -18,7 +18,7 @@ export const validationErrorMessages = {
     'lowercase': 'Must include lowercase letter',
     'digits': 'Must include at least 1 digit',
     'symbols': 'Must include at least 1 symbol',
-    'spaces': 'Cannot include spaces',
+    'spaces': 'May not contain spaces',
     'oneOf': 'A little more creativity'
 
 }
@@ -35,4 +35,12 @@ export function validatePassword(password) {
 
 export function getPasswordValidationErrors(password){
     return schema.validate(password, {list : true});
+}
+
+const usernameSchema = new PasswordValidator();
+usernameSchema.has().not().spaces();
+
+export function getUsernameValidationErrors(username){
+    console.log(username)
+    return usernameSchema.validate(username, {list : true});
 }

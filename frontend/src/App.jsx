@@ -1,13 +1,13 @@
 
 import { BrowserRouter } from "react-router-dom";
-import { Login} from "./pages/login/Login";
-
+import { Register } from "./pages/register/Register";
+import { Login } from "./pages/login/Login";
 
 function App() {
-
+  var login = false
   return (
     <BrowserRouter>
-      <Login/>
+      {login? <Login/> : <Register/>}
     </BrowserRouter>
   );
 }
