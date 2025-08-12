@@ -7,7 +7,7 @@ const theme = createTheme({
             main: "#7f5937",
         },
         logoOrange : {
-            main : "#F28C28"
+            main : "#FF7518"
         },
         buttonGreen : {
             main: "#0d7544"

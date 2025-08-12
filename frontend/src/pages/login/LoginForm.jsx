@@ -12,7 +12,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
-import Logo from "../../components/Logo";
+import LogoTitle from "../../components/LogoTitle";
 import { useState, useEffect } from "react";
 import { handleLogin } from "@/utils/auth/handleLogin";
 
@@ -32,7 +32,9 @@ export const LoginForm = () => {
     return (
 
         <AuthCard>
-            <Logo/>
+            <Box display={{sm:'none'}}>
+                <LogoTitle/>
+            </Box>
             <Typography
                 component="h1"
                 variant="h4"

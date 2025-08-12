@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 
-export default function AuthLayout({backgroundImage, children}) {
+export default function AuthLayout({backgroundImage, gap=12, children}) {
     return (
         <Stack component={'main'}
           sx={{
@@ -29,7 +29,7 @@ export default function AuthLayout({backgroundImage, children}) {
             direction={{ xs: 'column-reverse', md: 'row' }}
             sx={{
               justifyContent: 'center',
-              gap: { xs: 6, sm: 12 },
+              gap: { xs: 6, sm: gap },
               p: { xs: 2, sm: 4 },
               m: 'auto',
             }}

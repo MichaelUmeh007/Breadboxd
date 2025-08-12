@@ -1,7 +1,13 @@
 import Logo from "@/assets/logo.svg?react";
 import { Box, SvgIcon, Typography} from "@mui/material";
 import { useTheme } from "@mui/material";
-export default function LogoTitle ({size = 50, fontSize = '2rem', justifyContent='center', alignItems='center'}) {
+
+export default function LogoTitle ({
+    size = 50,
+    fontSize = '2rem',
+    justifyContent='center',
+    alignItems='center'
+}) {
     const theme = useTheme();
     return (
         <Box
