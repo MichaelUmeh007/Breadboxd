@@ -32,6 +32,8 @@ export const RegisterForm = () => {
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState({
         username: '',
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
         registration: '',
@@ -71,7 +73,7 @@ export const RegisterForm = () => {
 
             <Box 
                 component="form"
-                onSubmit={(e) => handleRegister(e, username, email, password, setErrors, setLoading)} 
+                onSubmit={(e) => handleRegister(e, username, firstname, lastname, email, password, setErrors, setLoading)} 
                 sx={{
                 width: '100%',
                 display: "flex",
@@ -100,12 +102,7 @@ export const RegisterForm = () => {
                     autoComplete="username"
                     onChange={(e) => {setUsername(e.target.value); setErrors(prev => ({...prev, username:''}))}}
                     helperText={errors.username}
-                    error={errors.username !== ''}
-                    FormHelperTextProps={{
-                        sx:{
-                            color:'red',
-                        }
-                    }}
+                    error={!!errors.username}
                     
                     />
                 </FormControl>
@@ -129,7 +126,9 @@ export const RegisterForm = () => {
                     name="firstname"
                     onChange={(e) => {setFirstname(e.target.value);}}
                     placeholder="First Name"
-                    autoComplete="firstname"           
+                    autoComplete="firstname"    
+                    helperText={errors.firstname}
+                    error={!!errors.firstname}      
                     />  
                 </FormControl>
 
@@ -152,7 +151,9 @@ export const RegisterForm = () => {
                     name="lastname"
                     onChange={(e) => {setLastname(e.target.value);}}
                     placeholder="Last Name"
-                    autoComplete="lastname"           
+                    autoComplete="lastname"      
+                    helperText={errors.lastname}
+                    error={!!errors.lastname}          
                     />  
                 </FormControl>
 
@@ -177,13 +178,7 @@ export const RegisterForm = () => {
                     autoComplete="email"
                     onChange={(e) => {setEmail(e.target.value); setErrors(prev => ({...prev, email:''}))}}
                     helperText={errors.email}
-                    error={errors.email !== ''}
-                    FormHelperTextProps={{
-                        sx:{
-                            color:'red',
-                        }
-                    }}
-                    
+                    error={!!errors.email}    
                     />
                 </FormControl>
 
@@ -208,12 +203,7 @@ export const RegisterForm = () => {
                     onChange={(e) => {setPassword(e.target.value); setErrors(prev => ({...prev, password:''}))}}
                     placeholder="Password"
                     helperText={errors.password}
-                    error={errors.password !== ''}
-                    FormHelperTextProps={{
-                        sx:{
-                            color:'red',
-                        }
-                    }}
+                    error={!!errors.password}
                     />
                     <FormHelperText sx={{ color: "red", fontSize: 14 }} />
                 </FormControl>
