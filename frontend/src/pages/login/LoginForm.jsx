@@ -10,11 +10,11 @@ import {
 import AuthCard from "@/components/AuthCard";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
-import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
 import LogoTitle from "../../components/LogoTitle";
 import { useState, useEffect } from "react";
 import { handleLogin } from "@/utils/auth/handleLogin";
+import StyledLink from "../../components/StyledLink";
 
 
 export const LoginForm = () => {
@@ -91,12 +91,6 @@ export const LoginForm = () => {
                     onChange={(e) => {setUsername(e.target.value); setErrors(prev => ({...prev, username:''}))}}
                     helperText={errors.username}
                     error={errors.username !== ''}
-                    FormHelperTextProps={{
-                        sx:{
-                            color:'red',
-                        }
-                    }}
-                    
                     />
                 
                 </FormControl>
@@ -123,13 +117,7 @@ export const LoginForm = () => {
                     onChange={(e) => {setPassword(e.target.value); setErrors(prev => ({...prev, password:''}))}}
                     helperText={errors.password}
                     error={errors.password !== ''}
-                    FormHelperTextProps={{
-                        sx:{
-                            color:'red',
-                        }
-                    }}
                     />
-                    <FormHelperText sx={{ color: "red", fontSize: 14 }} />
                 </FormControl>
 
                 <Button
@@ -151,7 +139,7 @@ export const LoginForm = () => {
                 <Typography sx={{ mr: 1, color: 'wheat' }}>
                     New to Breadboxd?
                 </Typography>
-                <Link style={{ color: '#87CEEB' }} > Sign Up</Link>
+                <StyledLink to="/register"> Sign Up</StyledLink>
                 </Box>
             </Box>
 
