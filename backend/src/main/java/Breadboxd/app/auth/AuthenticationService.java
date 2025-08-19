@@ -34,11 +34,16 @@ public class AuthenticationService {
 
         userRepository.save(user);
 
-        var jwtToken = jwtService.generateToken(user);
+        var newAccessToken = jwtService.generateToken(user);
 
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        long nowSec = System.currentTimeMillis() / 1000; // current time in seconds
 
+        long accessTokenExpiresIn = (jwtService.extractExpiration(newAccessToken).getTime() / 1000) - nowSec;
 
+        return AuthenticationResponse.builder()
+                .accessToken(newAccessToken)
+                .accessTokenExpiresIn(accessTokenExpiresIn)
+                .build();
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -51,11 +56,16 @@ public class AuthenticationService {
         );
 
         var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
+        var newAccessToken = jwtService.generateToken(user);
+
+        long nowSec = System.currentTimeMillis() / 1000; // current time in seconds
+
+        long accessTokenExpiresIn = (jwtService.extractExpiration(newAccessToken).getTime() / 1000) - nowSec;
+
         return AuthenticationResponse.builder()
-                .token(jwtToken)
+                .accessToken(newAccessToken)
+                .accessTokenExpiresIn(accessTokenExpiresIn)
                 .build();
-
-
     }
 }
+

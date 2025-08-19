@@ -18,11 +18,15 @@ import { useTheme } from "@mui/material";
 import LogoTitle from "../../components/LogoTitle";
 import { useState, useEffect } from "react";
 import { handleRegister } from "../../utils/auth/handleRegister";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+import { useNavigate } from "react-router-dom";
 
 
 export const RegisterForm = () => {
 
     const theme = useTheme();
+    const signIn = useSignIn();
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [username, setUsername] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -72,7 +76,8 @@ export const RegisterForm = () => {
 
             <Box 
                 component="form"
-                onSubmit={(e) => handleRegister(e, username, firstname, lastname, email, password, setErrors, setLoading)} 
+                onSubmit={(e) => handleRegister(e, username, firstname, lastname, email, password,
+                     setErrors, setLoading, signIn, navigate)} 
                 sx={{
                 width: '100%',
                 display: "flex",
@@ -125,7 +130,7 @@ export const RegisterForm = () => {
                     name="firstname"
                     onChange={(e) => {setFirstname(e.target.value);}}
                     placeholder="First Name"
-                    autoComplete="firstname"    
+                    autoComplete="given-name"    
                     helperText={errors.firstname}
                     error={!!errors.firstname}      
                     />  
@@ -150,7 +155,7 @@ export const RegisterForm = () => {
                     name="lastname"
                     onChange={(e) => {setLastname(e.target.value);}}
                     placeholder="Last Name"
-                    autoComplete="lastname"      
+                    autoComplete="family-name"      
                     helperText={errors.lastname}
                     error={!!errors.lastname}          
                     />  

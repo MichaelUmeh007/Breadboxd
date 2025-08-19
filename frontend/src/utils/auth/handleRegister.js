@@ -1,4 +1,3 @@
-import { keyframes } from "@emotion/react";
 import axiosInstance from "../../api/axiosInstance";
 import { 
     validationErrorMessages,
@@ -10,7 +9,7 @@ import {
 
 
 export async function handleRegister(
-    event, username, firstname, lastname, email, password, setErrors, setLoading
+    event, username, firstname, lastname, email, password, setErrors, setLoading, signIn, navigate
 ) {
     event.preventDefault();
 
@@ -75,11 +74,28 @@ export async function handleRegister(
         const registerResponse = await axiosInstance.post(url + 'auth/register', payload)
 
         if (registerResponse.status === 200){
-            console.log('Handle successful register')
+            const isSigninSuccesful = signIn({
+                    auth: {
+                        token: registerResponse.data.accessToken,
+                        type: 'Bearer',
+                        expiresIn: registerResponse.data.accessTokenExpiresIn
+                    },
+                    userState: {
+                        name: username
+                    }
+                });
+            console.log(isSigninSuccesful)
+            if (isSigninSuccesful) {
+                console.log(registerResponse.data)
+            }
+            else {
+                console.error("Client-side sign-in failed.");
+                navigate('/login')
+            }
+        
         }
 
     }
-
 
 
     catch (error) {
@@ -87,6 +103,7 @@ export async function handleRegister(
            setErrors(error.response.data);
         } 
         else {
+            console.log(error)
             setErrors(prev => ({...prev, registration: 'Server Error. Try again later'}));
         }
         
