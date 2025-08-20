@@ -1,5 +1,7 @@
 package Breadboxd.app.auth;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +15,32 @@ public class AuthenticationController {
     private final AuthenticationService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody @Valid RegisterRequest request){
-        return ResponseEntity.ok(authService.register(request));
+    public ResponseEntity<AuthenticationResponse> register(
+            @RequestBody @Valid RegisterRequest request,
+            HttpServletResponse response
+    ){
+        AuthenticationResponse authenticationResponse = authService.register(request, response);
+        return ResponseEntity.ok(authenticationResponse);
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-        return ResponseEntity.ok(authService.authenticate(request));
+    public ResponseEntity<AuthenticationResponse> authenticate(
+            @RequestBody @Valid AuthenticationRequest request,
+            HttpServletResponse response
+    ){
+        AuthenticationResponse authenticationResponse = authService.authenticate(request, response);
+        return ResponseEntity.ok(authenticationResponse);
     }
 
+
+    @PostMapping("/refresh")
+    public ResponseEntity<AuthenticationResponse> refresh(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        AuthenticationResponse newTokens = authService.refresh(request, response);
+        return ResponseEntity.ok(newTokens);
+    }
 }
+
+

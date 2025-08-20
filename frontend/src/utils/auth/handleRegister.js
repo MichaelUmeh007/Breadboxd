@@ -9,7 +9,7 @@ import {
 
 
 export async function handleRegister(
-    event, username, firstname, lastname, email, password, setErrors, setLoading, signIn, navigate
+    event, username, firstname, lastname, email, password, setErrors, setLoading, navigate
 ) {
     event.preventDefault();
 
@@ -47,6 +47,7 @@ export async function handleRegister(
         const userExists = await axiosInstance.get(url + 'users/check-username', 
             {params:{username:username}}
         )
+
         if (userExists.data){
             setErrors(prev => ({...prev, username: 'Username is already taken'}))
             setLoading(false);
@@ -74,25 +75,7 @@ export async function handleRegister(
         const registerResponse = await axiosInstance.post(url + 'auth/register', payload)
 
         if (registerResponse.status === 200){
-            const isSigninSuccesful = signIn({
-                    auth: {
-                        token: registerResponse.data.accessToken,
-                        type: 'Bearer',
-                        expiresIn: registerResponse.data.accessTokenExpiresIn
-                    },
-                    userState: {
-                        name: username
-                    }
-                });
-            console.log(isSigninSuccesful)
-            if (isSigninSuccesful) {
-                console.log(registerResponse.data)
-            }
-            else {
-                console.error("Client-side sign-in failed.");
-                navigate('/login')
-            }
-        
+            console.log("Succesful Register")
         }
 
     }
