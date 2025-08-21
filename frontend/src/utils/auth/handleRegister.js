@@ -75,7 +75,7 @@ export async function handleRegister(
         const registerResponse = await axiosInstance.post(url + 'auth/register', payload)
 
         if (registerResponse.status === 200){
-            console.log("Succesful Register")
+            console.log(registerResponse.data)
         }
 
     }
