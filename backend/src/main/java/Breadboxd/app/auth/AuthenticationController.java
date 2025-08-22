@@ -41,6 +41,13 @@ public class AuthenticationController {
         AuthenticationResponse newTokens = authService.refresh(request, response);
         return ResponseEntity.ok(newTokens);
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(
+            HttpServletResponse response
+    ) {
+        return authService.logout(response);
+    }
 }
 
 

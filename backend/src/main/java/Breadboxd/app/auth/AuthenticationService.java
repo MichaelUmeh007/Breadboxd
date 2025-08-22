@@ -4,17 +4,22 @@ import Breadboxd.app.config.JwtService;
 import Breadboxd.app.user.Role;
 import Breadboxd.app.user.User;
 import Breadboxd.app.user.UserRepository;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.WebUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -54,8 +59,10 @@ public class AuthenticationService {
                 .build();
 
         userRepository.save(user);
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("roles", user.getRole().name());
 
-        var newAccessToken = jwtService.generateToken(user);
+        var newAccessToken = jwtService.generateToken(extraClaims, user);
         var newRefreshToken = jwtService.generateRefreshToken(user);
 
         addRefreshTokenCookie(response, newRefreshToken);
@@ -85,7 +92,10 @@ public class AuthenticationService {
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
 
-        var newAccessToken = jwtService.generateToken(user);
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("roles", user.getRole().name());
+
+        var newAccessToken = jwtService.generateToken(extraClaims, user);
         var newRefreshToken = jwtService.generateRefreshToken(user);
 
         addRefreshTokenCookie(response, newRefreshToken);
@@ -124,7 +134,10 @@ public class AuthenticationService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid Refresh Token");
         }
 
-        var newAccessToken = jwtService.generateToken(user);
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("roles", user.getRole().name());
+
+        var newAccessToken = jwtService.generateToken(extraClaims, user);
         var newRefreshToken = jwtService.generateRefreshToken(user);
 
         addRefreshTokenCookie(response, newRefreshToken);
@@ -137,6 +150,21 @@ public class AuthenticationService {
                 .accessToken(newAccessToken)
                 .accessTokenExpiresIn(accessTokenExpiresIn)
                 .build();
+    }
+
+    public ResponseEntity<Void> logout(
+            HttpServletResponse response
+    ) {
+        Cookie cookie = new Cookie("refreshToken", null);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(false);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+
+
+        response.addCookie(cookie);
+
+        return ResponseEntity.noContent().build();
     }
 }
 
