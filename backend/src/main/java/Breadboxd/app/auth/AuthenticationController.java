@@ -33,7 +33,7 @@ public class AuthenticationController {
     }
 
 
-    @PostMapping("/refresh")
+    @GetMapping("/refresh")
     public ResponseEntity<AuthenticationResponse> refresh(
             HttpServletRequest request,
             HttpServletResponse response

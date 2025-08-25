@@ -1,6 +1,7 @@
 import axios from "axios";
 
 let accessToken = null;
+const url = '/api/public/'
 
 const axiosInstance = axios.create({
   baseURL:
@@ -52,7 +53,7 @@ axiosInstance.interceptors.response.use(
         return Promise.reject(error);
       }
 
-      const isRefershcall = originalRequest?.url?.includes('auth/public/refresh')
+      const isRefershcall = originalRequest?.url?.includes('auth/refresh')
 
       if (error.response?.status === 401 && !originalRequest._retry && !isRefershcall) {
         if (isRefershing) {
@@ -70,7 +71,7 @@ axiosInstance.interceptors.response.use(
         isRefershing = true;
 
         try {
-          const res = await axiosInstance.post('auth/public/refresh');
+          const res = await axiosInstance.get('/api/public/auth/refresh');
           const newToken = res.data.accessToken;
 
           setAccessToken(newToken);

@@ -16,15 +16,17 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import StyledLink from "../../components/StyledLink";
 import { useTheme } from "@mui/material";
 import LogoTitle from "../../components/LogoTitle";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { handleRegister } from "../../utils/auth/handleRegister";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 
 export const RegisterForm = () => {
 
     const theme = useTheme();
     const navigate = useNavigate()
+    const { login } = useAuth();
     const [loading, setLoading] = useState(false)
     const [username, setUsername] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -75,7 +77,7 @@ export const RegisterForm = () => {
             <Box 
                 component="form"
                 onSubmit={(e) => handleRegister(e, username, firstname, lastname, email, password,
-                     setErrors, setLoading, navigate)} 
+                     setErrors, setLoading, navigate, login)} 
                 sx={{
                 width: '100%',
                 display: "flex",

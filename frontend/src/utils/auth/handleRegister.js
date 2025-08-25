@@ -1,4 +1,5 @@
 import axiosInstance from "../../api/axiosInstance";
+import { useAuth } from "../../context/authContext";
 import { 
     validationErrorMessages,
     getPasswordValidationErrors,
@@ -9,11 +10,12 @@ import {
 
 
 export async function handleRegister(
-    event, username, firstname, lastname, email, password, setErrors, setLoading, navigate
+    event, username, firstname, lastname, email, password, setErrors, setLoading, navigate, login
 ) {
     event.preventDefault();
 
     const url = '/api/public/'
+    
     
     setLoading(true);
     setErrors({ username: '', email: '', password: '', registration: '', firstname: '', lastname: '' });
@@ -75,7 +77,11 @@ export async function handleRegister(
         const registerResponse = await axiosInstance.post(url + 'auth/register', payload)
 
         if (registerResponse.status === 200){
-            console.log(registerResponse.data)
+
+            console.log("successful register")
+            login(registerResponse.data.accessToken);
+            navigate("/dashboard");
+
         }
 
     }
