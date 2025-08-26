@@ -12,14 +12,18 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { useTheme } from "@mui/material";
 import LogoTitle from "../../components/LogoTitle";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { handleLogin } from "@/utils/auth/handleLogin";
 import StyledLink from "../../components/StyledLink";
+import { useAuth } from "../../context/authContext";
 
 
 export const LoginForm = () => {
 
     const theme = useTheme();
+    const navigate = useNavigate();
+    const { login } = useAuth();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
@@ -61,7 +65,7 @@ export const LoginForm = () => {
             </FormHelperText>}
 
             <Box component="form" 
-                onSubmit={(e) => handleLogin(e, username, password, setErrors, setLoading)}
+                onSubmit={(e) => handleLogin(e, username, password, setErrors, setLoading, navigate, login)}
                 sx={{
                 width: '100%',
                 display: "flex",

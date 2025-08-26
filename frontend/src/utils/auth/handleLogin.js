@@ -3,7 +3,7 @@ import { validationErrorMessages, getPasswordValidationErrors } from "./authVali
 
 
 
-export async function handleLogin(event, username, password, setErrors, setLoading) {
+export async function handleLogin(event, username, password, setErrors, setLoading, navigate, login) {
     event.preventDefault();
 
     const url = '/api/public/'
@@ -42,6 +42,8 @@ export async function handleLogin(event, username, password, setErrors, setLoadi
         
         if (loginResponse.status === 200){
             console.log('Handle successful login')
+            login(loginResponse.data.accessToken);
+            navigate("/dashboard");
         }
 
     }

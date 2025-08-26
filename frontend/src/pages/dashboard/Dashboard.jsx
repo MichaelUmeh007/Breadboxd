@@ -6,7 +6,7 @@ export const Dashboard = () => {
             Welcome to your dashboard
             <ul>
                 <li>Username: {user.username}</li>
-                <li>Role {user.roles}</li>
+                <li>Role: {user.roles}</li>
             </ul>
         </div>
 
