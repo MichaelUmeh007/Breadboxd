@@ -13,17 +13,20 @@ import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import { Link } from "react-router-dom";
+import StyledLink from "../../components/StyledLink";
 import { useTheme } from "@mui/material";
-import Logo from "../../components/Logo";
 import LogoTitle from "../../components/LogoTitle";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { handleRegister } from "../../utils/auth/handleRegister";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 
 export const RegisterForm = () => {
 
     const theme = useTheme();
+    const navigate = useNavigate()
+    const { login } = useAuth();
     const [loading, setLoading] = useState(false)
     const [username, setUsername] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -73,7 +76,8 @@ export const RegisterForm = () => {
 
             <Box 
                 component="form"
-                onSubmit={(e) => handleRegister(e, username, firstname, lastname, email, password, setErrors, setLoading)} 
+                onSubmit={(e) => handleRegister(e, username, firstname, lastname, email, password,
+                     setErrors, setLoading, navigate, login)} 
                 sx={{
                 width: '100%',
                 display: "flex",
@@ -126,7 +130,7 @@ export const RegisterForm = () => {
                     name="firstname"
                     onChange={(e) => {setFirstname(e.target.value);}}
                     placeholder="First Name"
-                    autoComplete="firstname"    
+                    autoComplete="given-name"    
                     helperText={errors.firstname}
                     error={!!errors.firstname}      
                     />  
@@ -151,7 +155,7 @@ export const RegisterForm = () => {
                     name="lastname"
                     onChange={(e) => {setLastname(e.target.value);}}
                     placeholder="Last Name"
-                    autoComplete="lastname"      
+                    autoComplete="family-name"      
                     helperText={errors.lastname}
                     error={!!errors.lastname}          
                     />  
@@ -222,7 +226,7 @@ export const RegisterForm = () => {
                 <Typography sx={{ mr: 1, color: 'wheat' }}>
                     Already a member?
                 </Typography>
-                <Link style={{ color: '#87CEEB' }} > Login</Link>
+                <StyledLink to="/login"> Login </StyledLink>
                 </Box>
             </Box>
 

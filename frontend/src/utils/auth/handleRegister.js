@@ -1,5 +1,5 @@
-import { keyframes } from "@emotion/react";
 import axiosInstance from "../../api/axiosInstance";
+import { useAuth } from "../../context/authContext";
 import { 
     validationErrorMessages,
     getPasswordValidationErrors,
@@ -10,11 +10,12 @@ import {
 
 
 export async function handleRegister(
-    event, username, firstname, lastname, email, password, setErrors, setLoading
+    event, username, firstname, lastname, email, password, setErrors, setLoading, navigate, login
 ) {
     event.preventDefault();
 
     const url = '/api/public/'
+    
     
     setLoading(true);
     setErrors({ username: '', email: '', password: '', registration: '', firstname: '', lastname: '' });
@@ -48,6 +49,7 @@ export async function handleRegister(
         const userExists = await axiosInstance.get(url + 'users/check-username', 
             {params:{username:username}}
         )
+
         if (userExists.data){
             setErrors(prev => ({...prev, username: 'Username is already taken'}))
             setLoading(false);
@@ -75,11 +77,14 @@ export async function handleRegister(
         const registerResponse = await axiosInstance.post(url + 'auth/register', payload)
 
         if (registerResponse.status === 200){
-            console.log('Handle successful register')
+
+            console.log("successful register")
+            login(registerResponse.data.accessToken);
+            navigate("/dashboard");
+
         }
 
     }
-
 
 
     catch (error) {
@@ -87,6 +92,7 @@ export async function handleRegister(
            setErrors(error.response.data);
         } 
         else {
+            console.log(error)
             setErrors(prev => ({...prev, registration: 'Server Error. Try again later'}));
         }
         

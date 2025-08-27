@@ -5,6 +5,7 @@ const theme = createTheme({
     palette: {
         breadbrown : {
             main: "#7f5937",
+            secondary: "wheat",
         },
         logoOrange : {
             main : "#FF7518"
@@ -14,7 +15,6 @@ const theme = createTheme({
         }
     },
     borderRadius: 2,
-    backgroundColor: "wheat",
     logoFontFamily: 'bebas neue'
 })
 
