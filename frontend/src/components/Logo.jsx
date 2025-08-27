@@ -1,5 +1,5 @@
 import LogoImg from "@/assets/logo.svg?react";
-import { Box, SvgIcon, Typography} from "@mui/material";
+import { Box, SvgIcon } from "@mui/material";
 import { useTheme } from "@mui/material";
 
 

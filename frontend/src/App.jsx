@@ -9,7 +9,6 @@ import theme from './theme';
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { AuthProvider } from "./context/authContext";
 
-
 function App() {
 
     return (
