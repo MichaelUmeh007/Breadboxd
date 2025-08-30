@@ -1,10 +1,9 @@
-package Breadboxd.app.recipe;
+package Breadboxd.app.ingredient;
 
+import Breadboxd.app.recipe.Recipe;
+import Breadboxd.app.recipe.Unit;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Check;
 
 @Data
@@ -20,18 +19,18 @@ public class RecipeIngredient {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipe_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Recipe recipe;
 
-    @Column(
-            name="name",
-            columnDefinition = "TEXT",
-            length = 100,
-            nullable = false
-    )
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ingredient_id", nullable = false)
+    private Ingredient ingredient;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
     private Unit unit;
 
     private Float quantity;

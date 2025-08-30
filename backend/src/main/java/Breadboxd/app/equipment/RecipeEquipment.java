@@ -1,6 +1,8 @@
-package Breadboxd.app.recipe;
+package Breadboxd.app.equipment;
 
+import Breadboxd.app.recipe.Recipe;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.hibernate.annotations.Check;
 
@@ -9,26 +11,23 @@ import org.hibernate.annotations.Check;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="recipe_instructions")
-@Check(constraints = "step_number > 0")
-public class RecipeInstruction {
-
+@Table(name = "recipe_equipment")
+@Check(constraints = "quantity > 0")
+public class RecipeEquipment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(
-            name = "step_number",
-            nullable = false
-    )
-    private Integer stepNumber;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "equipment_id", nullable = false)
+    private Equipment equipment;
 
     @Column(
-            name = "description",
-            length = 250,
+            name = "quantity",
             nullable = false
     )
-    private String description;
+    @Min(1)
+    private Integer quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipe_id")
@@ -36,3 +35,4 @@ public class RecipeInstruction {
     @EqualsAndHashCode.Exclude
     private Recipe recipe;
 }
+

@@ -27,7 +27,10 @@ public enum Unit {
     CM,
     M,
     IN,
-    FT
+    FT,
+
+    // MISC
+    CT // simple count/ number of ingredient
 
 
 

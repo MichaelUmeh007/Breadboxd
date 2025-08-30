@@ -1,5 +1,7 @@
 package Breadboxd.app.recipe;
 
+import Breadboxd.app.equipment.RecipeEquipment;
+import Breadboxd.app.ingredient.RecipeIngredient;
 import Breadboxd.app.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -54,6 +56,7 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User author;
 
     @OneToOne(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -62,19 +65,23 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("stepNumber ASC")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<RecipeInstruction> recipeInstructions = new ArrayList<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<RecipeIngredient> recipeIngredients = new HashSet<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<RecipeEquipment> recipeEquipment = new HashSet<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("date ASC")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<RecipeReview> recipeReviews = new ArrayList<>();
 
     @Column(
@@ -85,6 +92,13 @@ public class Recipe {
     private Integer servings;
 
     // --- Helper methods to maintain bidirectional relationships ---
+
+    public void setRecipeImage(RecipeImage image) {
+        this.recipeImage = image;
+        if (image != null){
+            image.setRecipe(this);
+        }
+    }
 
     public void addInstruction(RecipeInstruction instruction) {
         recipeInstructions.add(instruction);

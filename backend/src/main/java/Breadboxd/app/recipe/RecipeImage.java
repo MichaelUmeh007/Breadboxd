@@ -1,10 +1,7 @@
 package Breadboxd.app.recipe;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -24,7 +21,10 @@ public class RecipeImage {
     )
     private String imageUrl;
 
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipe_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Recipe recipe;
 }

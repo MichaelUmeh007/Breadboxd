@@ -2,14 +2,10 @@ package Breadboxd.app.recipe;
 
 import Breadboxd.app.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Check;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,7 +13,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="reviews")
+@Table(
+        name="recipe_reviews",
+        uniqueConstraints =  @UniqueConstraint(columnNames = { "user_id", "recipe_id"})
+
+)
 @Check(constraints = "rating >= 0 AND rating <= 5")
 public class RecipeReview {
 
@@ -33,15 +33,13 @@ public class RecipeReview {
 
     @Column(
             name = "title",
-            columnDefinition = "TEXT",
-            length = 80,
+            length = 100,
             nullable = false
     )
     private String title;
     @Column(
             name = "comment",
-            columnDefinition = "TEXT",
-            length = 180
+            length = 225
     )
     private String comment;
 
@@ -51,10 +49,14 @@ public class RecipeReview {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User reviewer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipe_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Recipe recipe;
 
 }
