@@ -1,5 +1,6 @@
-package Breadboxd.app.recipe;
+package Breadboxd.app.review;
 
+import Breadboxd.app.recipe.Recipe;
 import Breadboxd.app.user.User;
 import jakarta.persistence.*;
 import lombok.*;

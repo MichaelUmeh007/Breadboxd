@@ -1,14 +1,16 @@
-import { useAuth } from "../../context/authContext"
+import { useIsMobile } from "../../hooks/useIsMobile"
+import { MobileDashboard } from "./MobileDashboard";
+import { DesktopDashboard } from "./DesktopDashboard";
+import { Box } from "@mui/material";
 export const Dashboard = () => {
-    const { user } = useAuth();
-    return (
-        <div>
-            Welcome to your dashboard
-            <ul>
-                <li>Username: {user.username}</li>
-                <li>Role: {user.roles}</li>
-            </ul>
-        </div>
+    const IsMobile = useIsMobile();
 
-    )
-}
+    return (
+        <Box>
+            { IsMobile ?
+                (<MobileDashboard/>) :
+                (<DesktopDashboard/>)
+            }
+        </Box>
+    );
+};

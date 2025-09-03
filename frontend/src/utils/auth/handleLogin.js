@@ -41,7 +41,6 @@ export async function handleLogin(event, username, password, setErrors, setLoadi
         )
         
         if (loginResponse.status === 200){
-            console.log('Handle successful login')
             login(loginResponse.data.accessToken);
             navigate("/dashboard");
         }

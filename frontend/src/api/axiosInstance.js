@@ -1,7 +1,6 @@
 import axios from "axios";
 
 let accessToken = null;
-const url = '/api/public/'
 
 const axiosInstance = axios.create({
   baseURL:

@@ -2,6 +2,8 @@ package Breadboxd.app.recipe;
 
 import Breadboxd.app.equipment.RecipeEquipment;
 import Breadboxd.app.ingredient.RecipeIngredient;
+import Breadboxd.app.instruction.RecipeInstruction;
+import Breadboxd.app.review.RecipeReview;
 import Breadboxd.app.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -40,8 +42,7 @@ public class Recipe {
 
     @Enumerated(EnumType.STRING)
     @Column(
-            name = "cuisine",
-            nullable = false
+            name = "cuisine"
     )
     private Cuisine cuisine;
 

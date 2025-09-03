@@ -1,5 +1,6 @@
-package Breadboxd.app.recipe;
+package Breadboxd.app.instruction;
 
+import Breadboxd.app.recipe.Recipe;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Check;
