@@ -1,30 +1,20 @@
 package Breadboxd.app.recipe;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 @Service
 @RequiredArgsConstructor
 public class RecipeService {
 
     private final RecipeRepository recipeRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RecipeService.class);
 
     public List<RecipeListDTO> getAllRecipes(){
-        return recipeRepository.findAll()
-                .stream()
-                .map(recipe -> new RecipeListDTO(
-                        recipe.getId(),
-                        recipe.getTitle(),
-                        recipe.getDescription(),
-                        recipe.getCuisine(),
-                        recipe.getCreatedAt(),
-                        recipe.getUpdatedAt(),
-                        recipe.getAuthor() != null ? recipe.getAuthor().getUsername() : "Unknown",
-                        recipe.getRecipeImage() != null ? recipe.getRecipeImage().getImageUrl() : "Unavailable"
-                ))
-                .collect(Collectors.toList());
+        return recipeRepository.findAllWithAverageRatingAndCountRating();
     }
 }

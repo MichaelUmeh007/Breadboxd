@@ -59,6 +59,7 @@ public class DataSeeder {
                 Recipe recipe = Recipe.builder()
                         .title("Spaghetti Bolognese")
                         .description("Classic Italian pasta with rich meat sauce")
+                        .cuisine(Cuisine.ITALIAN)
                         .author(user)
                         .servings(4)
                         .build();

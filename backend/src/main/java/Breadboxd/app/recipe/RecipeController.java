@@ -21,4 +21,5 @@ public class RecipeController {
         return ResponseEntity.ok(allRecipes);
     }
 
+
 }

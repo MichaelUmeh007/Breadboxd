@@ -19,7 +19,7 @@ public class RecipeImage {
             nullable = true,
             columnDefinition = "TEXT"
     )
-    private String imageUrl;
+    private String url;
 
 
     @OneToOne(fetch = FetchType.LAZY)
