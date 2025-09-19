@@ -1,6 +1,6 @@
 package Breadboxd.app.config;
 
-import Breadboxd.app.user.UserRepository;
+
 import Breadboxd.app.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

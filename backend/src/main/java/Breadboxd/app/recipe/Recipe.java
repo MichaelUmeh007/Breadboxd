@@ -80,7 +80,7 @@ public class Recipe {
     private Set<RecipeEquipment> recipeEquipment = new HashSet<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OrderBy("date ASC")
+    @OrderBy("createdAt DESC")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<RecipeReview> recipeReviews = new ArrayList<>();

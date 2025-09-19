@@ -1,5 +1,5 @@
 import { Stack, Typography, Box } from "@mui/material"
-import LogoTitle from "../../components/LogoTitle"
+import LogoTitle from "../../components/misc/LogoTitle"
 export const LoginContent = () => {
     return (
     <Stack

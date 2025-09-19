@@ -7,15 +7,15 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import AuthCard from "@/components/AuthCard";
+import AuthCard from "@/components/auth/AuthCard";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { useTheme } from "@mui/material";
-import LogoTitle from "../../components/LogoTitle";
+import LogoTitle from "../../components/misc/LogoTitle";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { handleLogin } from "@/utils/auth/handleLogin";
-import StyledLink from "../../components/StyledLink";
+import StyledLink from "../../components/misc/StyledLink";
 import { useAuth } from "../../context/authContext";
 
 

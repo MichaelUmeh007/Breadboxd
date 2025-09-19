@@ -1,15 +1,14 @@
 package Breadboxd.app.user;
 
-import Breadboxd.app.recipe.Recipe;
+import Breadboxd.app.recipe.SavedRecipe;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 
 @Data
 @Builder
@@ -47,12 +46,11 @@ public class User implements UserDetails {
 
     @Column(name = "password",
             nullable = false,
-            columnDefinition = "TEXT",
-            unique = true)
+            columnDefinition = "TEXT")
     @ToString.Exclude
     private String password;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "role",
             nullable = false)
     private Role role;
@@ -60,6 +58,12 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private UserImage userImage;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OrderBy("savedAt DESC")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<SavedRecipe> savedRecipes;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
