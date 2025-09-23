@@ -7,6 +7,7 @@ import Breadboxd.app.equipment.*;
 import Breadboxd.app.review.*;
 import Breadboxd.app.user.Role;
 import Breadboxd.app.user.User;
+import Breadboxd.app.user.UserImage;
 import Breadboxd.app.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -43,6 +44,13 @@ public class DataSeeder {
             List<String> users = new ArrayList<>(Arrays.asList("mike", "suzy", "cathy"));
             for (String s : users) {
 
+
+
+                // Create test user Image
+                UserImage userImage = UserImage.builder()
+                        .url("Placeholder")
+                        .build();
+
                 // Create a user
                 String emailEnd = "@example.com";
                 User user = User.builder()
@@ -50,20 +58,36 @@ public class DataSeeder {
                         .firstname("Mike")
                         .lastname("Jeffries")
                         .role(Role.USER)
+                        .userImage(null)
                         .email(s + emailEnd)
                         .password(passwordEncoder.encode("aA1!aaaa"))
                         .build();
+
+//                userImage.setUser(user);
+
                 userRepository.save(user);
+
+                // Create test recipe image
+                RecipeImage recipeImage = RecipeImage.builder()
+                        .url("Placeholder")
+                        .build();
 
                 // Create a recipe
                 Recipe recipe = Recipe.builder()
                         .title("Spaghetti Bolognese")
                         .description("Classic Italian pasta with rich meat sauce")
                         .cuisine(Cuisine.ITALIAN)
+                        .recipeImage(null)
                         .author(user)
                         .servings(4)
                         .build();
+
+//                recipeImage.setRecipe(recipe);
+
                 recipeRepository.save(recipe);
+
+
+
 
                 // Add ingredients
 

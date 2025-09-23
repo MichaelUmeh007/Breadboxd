@@ -14,9 +14,11 @@ export const MobileDashboard = () => {
     useEffect(() => {
         async function getAllRecipes() {
             const response = await axiosInstance.get("/api/recipes")
+            console.log(response.data[0])
+
             const normalizedRecipes = response.data.map(normalizeRecipe)
             setRecipe(normalizedRecipes[0])
-            console.log(normalizedRecipes)
+            
         };
         getAllRecipes();
     }, [])

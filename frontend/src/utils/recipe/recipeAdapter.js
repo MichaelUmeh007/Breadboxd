@@ -6,6 +6,10 @@ export const normalizeRecipe = (rawRecipe) => ({
     createdAt: rawRecipe.createdAt ?? "Unavailable",
     updatedAt: rawRecipe.updatedAt ?? "Unavailable",
     authorName: rawRecipe.authorName ?? "Anonymous",
+    userImageUrl:
+        rawRecipe.userImageUrl && rawRecipe.userImageUrl !== "Unavailable"
+        ? rawRecipe.userImageUrl
+        : null,
     imageUrl:
         rawRecipe.imageUrl && rawRecipe.imageUrl !== "Unavailable"
         ? rawRecipe.imageUrl

@@ -11,6 +11,7 @@ public record RecipeListDTO (
     LocalDateTime createdAt,
     LocalDateTime updatedAt,
     String authorName,
+    String userImageUrl,
     String imageUrl,
     Double averageRating,
     Long ratingCount

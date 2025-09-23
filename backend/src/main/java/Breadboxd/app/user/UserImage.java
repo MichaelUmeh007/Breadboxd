@@ -23,7 +23,7 @@ public class UserImage {
             nullable = true,
             columnDefinition = "TEXT"
     )
-    private String imageUrl;
+    private String url;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
