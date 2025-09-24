@@ -7,8 +7,6 @@ public record RecipeListDTO (
     Integer id,
     String title,
     String description,
-    Cuisine cuisine,
-    LocalDateTime createdAt,
     LocalDateTime updatedAt,
     String authorName,
     String userImageUrl,

@@ -5,29 +5,28 @@ import { useAuth } from "../../context/authContext"
 import { RecipeListCard } from "../../components/recipe/RecipeListCard"
 import Loading from "../../components/misc/Loading"
 import { normalizeRecipe } from "../../utils/recipe/recipeAdapter"
+import MobileFeedLayout from "../../layouts/MobileFeedLayout"
+import FeedLayout from "../../layouts/FeedLayout"
 
 export const MobileDashboard = () => {
     
     const { user } = useAuth();
-    const [recipe, setRecipe] = useState(null)
+    const [recipes, setRecipes] = useState(null)
     
     useEffect(() => {
         async function getAllRecipes() {
-            const response = await axiosInstance.get("/api/recipes")
-            console.log(response.data[0])
 
+            const response = await axiosInstance.get("/api/recipes")
             const normalizedRecipes = response.data.map(normalizeRecipe)
-            setRecipe(normalizedRecipes[0])
+            setRecipes(normalizedRecipes)
             
         };
         getAllRecipes();
     }, [])
 
-    if (!recipe) return (<Loading/>)
+    if (!recipes) return (<Loading/>)
 
     return (
-        <Box>
-            <RecipeListCard recipe={recipe}/>
-        </Box>
+            <FeedLayout recipes={recipes}/>
     )
 }

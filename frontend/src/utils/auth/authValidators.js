@@ -23,6 +23,11 @@ export const validationErrorMessages = {
 
 }
 
+export const usernameValidationErrorMessages = {
+    'spaces': 'May not contain spaces',
+    'max': 'Maximum length of 25'
+}
+
 export function validatePassword(password) {
     const missingReqs = schema.validate(password, {list:true});
     console.log(missingReqs)
@@ -43,7 +48,9 @@ export function getPasswordValidationErrors(password){
 }
 
 const usernameSchema = new PasswordValidator();
-usernameSchema.has().not().spaces();
+usernameSchema
+.has().not().spaces()
+.is().max(25);
 
 export function getUsernameValidationErrors(username){
     return usernameSchema.validate(username, {list : true});

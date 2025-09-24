@@ -69,7 +69,7 @@ public class DataSeeder {
 
                 // Create test recipe image
                 RecipeImage recipeImage = RecipeImage.builder()
-                        .url("Placeholder")
+                        .url("src/assets/sampleRecipeImage.jpg")
                         .build();
 
                 // Create a recipe
@@ -77,12 +77,12 @@ public class DataSeeder {
                         .title("Spaghetti Bolognese")
                         .description("Classic Italian pasta with rich meat sauce")
                         .cuisine(Cuisine.ITALIAN)
-                        .recipeImage(null)
+                        .recipeImage(recipeImage)
                         .author(user)
                         .servings(4)
                         .build();
 
-//                recipeImage.setRecipe(recipe);
+                recipeImage.setRecipe(recipe);
 
                 recipeRepository.save(recipe);
 

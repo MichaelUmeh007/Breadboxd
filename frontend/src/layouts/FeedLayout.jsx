@@ -1,11 +1,27 @@
-import Stack from '@mui/material/Stack';
+import { Box, CircularProgress, Typography } from "@mui/material";
+import { RecipeListCard } from "../components/recipe/RecipeListCard";
+import Loading from "../components/misc/Loading";
 
-// place holder
-const FeedLayout = ({ children }) => {
+const FeedLayout = ({ recipes, loading, variant }) => {
+  if (loading) {
     return (
-        <Stack>
-        </Stack>
+      <Loading/>
     );
+  }
+
+  if (!recipes || recipes.length === 0) {
+    return (
+      <Loading/>
+    );
+  }
+
+  return (
+    <Box display="flex" flexDirection="column" gap={0}>
+      {recipes.map((recipe) => (
+        <RecipeListCard key={recipe.id} recipe={recipe} variant={variant} />
+      ))}
+    </Box>
+  );
 };
 
 export default FeedLayout;

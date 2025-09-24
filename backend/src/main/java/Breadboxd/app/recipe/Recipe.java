@@ -6,6 +6,7 @@ import Breadboxd.app.instruction.RecipeInstruction;
 import Breadboxd.app.review.RecipeReview;
 import Breadboxd.app.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -27,10 +28,10 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @NotBlank
     @Column(
-            length = 150,
+            length = 80,
             nullable = false
-
     )
     private String title;
 
@@ -84,6 +85,12 @@ public class Recipe {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<RecipeReview> recipeReviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "recipe", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OrderBy("savedAt DESC")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<SavedRecipe> savedRecipes;
 
     @Column(
             name = "servings",

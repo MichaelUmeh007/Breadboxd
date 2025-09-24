@@ -8,4 +8,4 @@ const MobileFeedLayout = ({ children }) => {
     );
 };
 
-export default FeedLayout;
+export default MobileFeedLayout;

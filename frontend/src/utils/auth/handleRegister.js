@@ -2,6 +2,7 @@ import axiosInstance from "../../api/axiosInstance";
 import { useAuth } from "../../context/authContext";
 import { 
     validationErrorMessages,
+    usernameValidationErrorMessages,
     getPasswordValidationErrors,
     getUsernameValidationErrors,
     validateEmail
@@ -23,7 +24,7 @@ export async function handleRegister(
     // Check Username validity
     const UsernameErrors = getUsernameValidationErrors(username);
     if (UsernameErrors.length > 0) {
-        setErrors(prev => ({ ...prev, username: validationErrorMessages[UsernameErrors[0]]}))
+        setErrors(prev => ({ ...prev, username: usernameValidationErrorMessages[UsernameErrors[0]]}))
         setLoading(false);
         return;
     }
