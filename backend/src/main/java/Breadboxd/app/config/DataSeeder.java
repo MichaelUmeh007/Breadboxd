@@ -41,7 +41,9 @@ public class DataSeeder {
                 return;
             }
 
-            List<String> users = new ArrayList<>(Arrays.asList("mike", "suzy", "cathy"));
+            List<String> users = new ArrayList<>(Arrays.asList(
+                    "mike", "suzy", "cathy", "james", "john", "william",
+                    "bill", "hillary", "obama", "jacob", "hartelstein"));
             for (String s : users) {
 
 

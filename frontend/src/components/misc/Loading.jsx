@@ -2,7 +2,7 @@ import { useTheme, Box, Typography } from "@mui/material";
 import { SvgIcon } from "@mui/material";
 import LoadingIcon from "@/assets/LoadingIcon.svg?react"
 
-const Loading = () => {
+const Loading = ({message}) => {
     const theme = useTheme();
     return (
         <Box
@@ -34,15 +34,35 @@ const Loading = () => {
                 }}  
             />
 
-            
+            <Box
+                sx={{
+                    display:'flex',
+                    flexDirection:'column',
+                    justifyContent:'center',
+                    alignItems: 'center',
+                }}
+            >
             <Typography                     
-            sx={{
-                    fontSize:{xs:"1.5rem", md:"2rem"},
-                    color:'white',
-                    fontWeight:'bold'
+                sx={{
+                        fontSize:{xs:"1.5rem", md:"2rem"},
+                        color:'white',
+                        fontWeight:'bold'
                 }}>
                 Loading...
             </Typography>
+
+            { message &&
+                <Typography                     
+                    sx={{
+                        fontSize:{xs:"1rem", md:"1.5rem"},
+                        color: "orange",
+                        textAlign: "center"
+                    }}>
+                    {message}
+                </Typography>
+            }
+            </Box>
+
 
         </Box>
 

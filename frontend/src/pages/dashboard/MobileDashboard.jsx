@@ -16,8 +16,10 @@ export const MobileDashboard = () => {
     useEffect(() => {
         async function getAllRecipes() {
 
-            const response = await axiosInstance.get("/api/recipes")
-            const normalizedRecipes = response.data.map(normalizeRecipe)
+            const response = await axiosInstance.get("/api/recipes",
+                {params : {page: 0, size: 5}}
+            )
+            const normalizedRecipes = response.data.content.map(normalizeRecipe)
             setRecipes(normalizedRecipes)
             
         };
@@ -26,7 +28,40 @@ export const MobileDashboard = () => {
 
     if (!recipes) return (<Loading/>)
 
+    async function fetchRecipes (page, size) {
+         const response = await axiosInstance.get("/api/recipes",
+                {params : {page: page, size: size}}
+        )
+        console.log("fetch page", page)
+        return response.data
+    }
+       
+
     return (
-            <FeedLayout recipes={recipes}/>
+    <Box>
+        <FeedLayout fetchRecipes={fetchRecipes} endMessage={"More recipes on the way!"}/>
+    </Box> 
+        
     )
 }
+
+
+// import { useState } from "react";
+// import { Tabs, Tab, Box } from "@mui/material";
+// import { MobileFeedLayout } from "./MobileFeedLayout";
+
+// export const MobileDashboard = () => {
+//   const [tab, setTab] = useState("explore");
+
+//   return (
+//     <Box>
+//       <Tabs value={tab} onChange={(e, val) => setTab(val)}>
+//         <Tab value="explore" label="Explore" />
+//         <Tab value="following" label="Following" />
+//         <Tab value="my" label="My Recipes" />
+//       </Tabs>
+
+//       <MobileFeedLayout currentFeed={tab} />
+//     </Box>
+//   );
+// };

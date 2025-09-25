@@ -1,10 +1,11 @@
 package Breadboxd.app.recipe;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
@@ -33,7 +34,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
         ui.url,
         ri.url
 """)
-    List<RecipeListDTO> findAllWithAverageRatingAndCountRatingandUserImage();
+    Page<RecipeListDTO> findAllWithPagination(Pageable pageable);
 }
 
 

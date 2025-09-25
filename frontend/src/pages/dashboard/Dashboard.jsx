@@ -6,7 +6,15 @@ export const Dashboard = () => {
     const IsMobile = useIsMobile();
 
     return (
-        <Box>
+        <Box 
+            sx={{
+                display:'flex',
+                justifyContent:'center',
+                alignItems: 'center',
+                minHeight:'100vh',
+                minWidth:'100vw',
+            }}
+        >
             { IsMobile ?
                 (<MobileDashboard/>) :
                 (<DesktopDashboard/>)
